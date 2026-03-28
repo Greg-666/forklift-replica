@@ -1,0 +1,36 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/">🚜 Forklift Replica</a>
+  </div>
+
+  <div class="navbar-search">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="search()"
+      placeholder="Rechercher... Search..." />
+    <button (click)="search()">🔍</button>
+  </div>
+
+  <ul class="navbar-links">
+    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
+    <li><a routerLink="/catalogue" routerLinkActive="active">Catalogue</a></li>
+    <li><a routerLink="/marques" routerLinkActive="active">Marques</a></li>
+    <li><a routerLink="/jouets" routerLinkActive="active">Jouets</a></li>
+    <li><a routerLink="/stats" routerLinkActive="active">Stats</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">À propos</a></li>
+
+    @if (authService.currentUser$ | async; as user) {
+      @if (user.role === 'admin') {
+        <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
+      }
+      @if (user.role === 'moderator') {
+        <li><a routerLink="/moderator" routerLinkActive="active">Modération</a></li>
+      }
+      <li><a routerLink="/profile" routerLinkActive="active">👤 {{ user.username }} {{ user.country }}</a></li>
+      <li><button class="btn-logout" (click)="logout()">Déconnexion</button></li>
+    } @else {
+      <li><a routerLink="/login" routerLinkActive="active">Connexion</a></li>
+    }
+  </ul>
+</nav>

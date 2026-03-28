@@ -1,0 +1,87 @@
+<div class="catalogue-page">
+  <div class="catalogue-header">
+    <h1>🚜 Catalogue</h1>
+    <p>{{ total }} chariot(s) dans la collection / {{ total }} forklift(s) in the collection</p>
+  </div>
+
+  <!-- FILTRES PAR TYPE -->
+  <div class="filter-section">
+    <h3>Par type</h3>
+    <div class="filter-tabs">
+      <button class="tab" [class.active]="activeFilter === 'tous'" (click)="resetFilters()">
+        Tous ({{ total }})
+      </button>
+      @for (type of types; track type.id) {
+        <button
+          class="tab"
+          [class.active]="selectedType === type.id.toString()"
+          (click)="selectType(type.id.toString())">
+          {{ type.nom }} ({{ type.total }})
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- FILTRES PAR MARQUE -->
+  <div class="filter-section">
+    <h3>Par marque constructeur</h3>
+    <div class="filter-tabs">
+      @for (marque of marques; track marque.id) {
+        @if ((marque.total_chariots ?? 0) > 0) {
+          <button
+            class="tab"
+            [class.active]="selectedMarque === marque.id.toString()"
+            (click)="selectMarque(marque.id.toString())">
+            {{ marque.nom }} ({{ marque.total_chariots }})
+          </button>
+        }
+      }
+    </div>
+  </div>
+
+  <!-- FILTRES PAR PAYS -->
+  <div class="filter-section">
+    <h3>Par pays</h3>
+    <div class="filter-tabs">
+      @for (p of pays; track p) {
+        <button
+          class="tab"
+          [class.active]="selectedPays === p"
+          (click)="selectPays(p)">
+          {{ p }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- GRILLE CHARIOTS -->
+  <div class="chariots-grid">
+    @for (chariot of chariots; track chariot.id) {
+      <div class="chariot-card">
+        @if (chariot.image_url) {
+          <img [src]="chariot.image_url" [alt]="chariot.modele" class="chariot-img" />
+        } @else {
+          <div class="chariot-placeholder">🚜</div>
+        }
+        <div class="chariot-body">
+          <span class="chariot-type">{{ chariot.type_nom }}</span>
+          <h3 class="chariot-marque">{{ chariot.marque_nom }}</h3>
+          <p class="chariot-modele">{{ chariot.modele || 'Sans modèle' }}</p>
+          @if (chariot.jouet_nom) {
+            <p class="chariot-jouet">{{ chariot.jouet_nom }}</p>
+          }
+          <p class="chariot-pays">{{ chariot.marque_pays }} · {{ chariot.marque_annee }}</p>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- PAGINATION -->
+  @if (totalPages > 1) {
+    <div class="pagination">
+      <button class="btn-page" [disabled]="page === 1" (click)="prevPage()">← Précédent</button>
+      <span class="page-info">{{ page }} / {{ totalPages }}</span>
+      <button class="btn-page" [disabled]="page === totalPages" (click)="nextPage()">Suivant →</button>
+    </div>
+  }
+</div>

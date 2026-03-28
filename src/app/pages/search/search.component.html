@@ -1,0 +1,48 @@
+<div class="search-page">
+  <div class="search-header">
+    <h1>🔍 Recherche / Search</h1>
+    @if (query) {
+      <p>{{ totalResults }} résultat(s) pour <span class="query">"{{ query }}"</span></p>
+    }
+  </div>
+
+  @if (chariots.length > 0) {
+    <div class="results-section">
+      <h2>🚜 Chariots ({{ chariots.length }})</h2>
+      <div class="chariots-grid">
+        @for (chariot of chariots; track chariot.id) {
+          <a [routerLink]="['/catalogue']" class="chariot-card">
+            <span class="chariot-type">{{ chariot.type_nom }}</span>
+            <span class="chariot-marque">{{ chariot.marque_nom }}</span>
+            <span class="chariot-modele">{{ chariot.modele || 'Sans modèle' }}</span>
+            @if (chariot.jouet_nom) {
+              <span class="chariot-jouet">{{ chariot.jouet_nom }}</span>
+            }
+          </a>
+        }
+      </div>
+    </div>
+  }
+
+  @if (articles.length > 0) {
+    <div class="results-section">
+      <h2>📝 Articles ({{ articles.length }})</h2>
+      <div class="articles-list">
+        @for (article of articles; track article.id) {
+          <a [routerLink]="['/article', article.id]" class="article-row">
+            <span class="article-category">{{ article.category }}</span>
+            <span class="article-title">{{ article.title }}</span>
+            <span class="article-author">{{ article.author }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  }
+
+  @if (totalResults === 0 && query) {
+    <div class="no-results">
+      <p>Aucun résultat pour "{{ query }}" 😕</p>
+      <p>Essaie avec une marque, un type ou un modèle !</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,70 @@
+<div class="about-page">
+  <div class="about-hero">
+    <h1>À propos / About</h1>
+    <p>La collection derrière Forklift Replica</p>
+  </div>
+
+  <div class="about-content">
+
+    <div class="about-section">
+      <h2>🚜 Qui sommes-nous ? / Who are we?</h2>
+      <p>Forklift Replica est un espace dédié aux passionnés de répliques de chariots élévateurs.
+        Notre mission est de recenser, présenter et partager une collection unique de miniatures
+        de chariots élévateurs de toutes marques et de tous types.</p>
+      <p>Forklift Replica is a space dedicated to forklift replica enthusiasts.
+        Our mission is to catalogue, present and share a unique collection of forklift miniatures
+        from all brands and all types.</p>
+    </div>
+
+    <div class="about-section">
+      <h2>🏭 Notre collection / Our collection</h2>
+      <p>De Jungheinrich à Toyota, de Clark à Linde, en passant par des marques plus rares comme
+        CVS Ferrari ou Steinbock, nous couvrons plus de 34 marques constructeur et 518 pièces
+        réparties en 13 types de chariots différents.</p>
+      <p>From Jungheinrich to Toyota, from Clark to Linde, including rarer brands such as
+        CVS Ferrari or Steinbock, we cover more than 34 manufacturer brands and 518 pieces
+        across 13 different forklift types.</p>
+    </div>
+
+    <div class="about-section">
+      <h2>👤 Notre équipe / Our team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">🚜</div>
+          <h3>L'ami de Greg</h3>
+          <p>Fondateur & Collectionneur</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section contact">
+      <h2>📬 Contactez-nous / Contact us</h2>
+      <p>Une question sur la collection ? Envie de devenir modérateur ?<br/>
+        A question about the collection? Want to become a moderator?</p>
+
+      @if (successMessage) {
+        <div class="alert success">{{ successMessage }}</div>
+      }
+      @if (errorMessage) {
+        <div class="alert error">{{ errorMessage }}</div>
+      }
+
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Votre nom / Your name</label>
+          <input type="text" [(ngModel)]="contactName" placeholder="Votre nom..." />
+        </div>
+        <div class="form-group">
+          <label>Votre email / Your email</label>
+          <input type="email" [(ngModel)]="contactEmail" placeholder="votre@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea [(ngModel)]="contactMessage" placeholder="Votre message..." rows="5"></textarea>
+        </div>
+        <button class="btn-submit" (click)="sendContact()">📨 Envoyer / Send</button>
+      </div>
+    </div>
+
+  </div>
+</div>

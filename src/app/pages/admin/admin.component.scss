@@ -1,0 +1,250 @@
+.admin-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.admin-header {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.admin-header h1 {
+  color: #d97706;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+/* ── Tabs ─────────────────────────────────── */
+.admin-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.tab:hover, .tab.active {
+  background-color: #d97706;
+  border-color: #d97706;
+  color: #fff;
+}
+
+/* ── Section ──────────────────────────────── */
+.admin-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.empty {
+  color: #78716c;
+  text-align: center;
+  padding: 2rem;
+  font-style: italic;
+}
+
+/* ── Cards ────────────────────────────────── */
+.user-card, .article-card {
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  transition: border-color 0.3s;
+}
+
+.user-card:hover, .article-card:hover {
+  border-color: #f59e0b;
+}
+
+.user-card.pending {
+  border-color: #fcd34d;
+  background-color: #fefce8;
+}
+
+.user-info, .article-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.username {
+  color: #1c1917;
+  font-weight: bold;
+}
+
+.email {
+  color: #78716c;
+  font-size: 0.85rem;
+}
+
+.role {
+  color: #92400e;
+  font-size: 0.85rem;
+}
+
+.role.moderator {
+  color: #d97706;
+  font-weight: 600;
+}
+
+.article-info .category {
+  background-color: #d97706;
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  width: fit-content;
+  font-weight: 600;
+}
+
+.article-info h3 {
+  color: #1c1917;
+  font-size: 1rem;
+}
+
+.article-info .meta {
+  color: #78716c;
+  font-size: 0.85rem;
+}
+
+/* ── Actions ──────────────────────────────── */
+.user-actions, .article-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.admin-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+/* ── Buttons ──────────────────────────────── */
+button {
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.btn-approve {
+  background-color: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.btn-approve:hover {
+  background-color: #15803d;
+  color: #fff;
+}
+
+.btn-promote {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+}
+
+.btn-promote:hover {
+  background-color: #1d4ed8;
+  color: #fff;
+}
+
+.btn-demote {
+  background-color: #fefce8;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+.btn-demote:hover {
+  background-color: #92400e;
+  color: #fff;
+}
+
+.btn-delete {
+  background-color: #fff1f2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+.btn-delete:hover {
+  background-color: #b91c1c;
+  color: #fff;
+}
+
+.btn-new {
+  background-color: #d97706;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-new:hover {
+  background-color: #b45309;
+}
+
+.btn-edit {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-edit:hover {
+  background-color: #1d4ed8;
+  color: #fff;
+}
+
+.pending-info {
+  color: #92400e;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 768px) {
+  .admin-page {
+    padding: 1rem;
+  }
+
+  .user-card, .article-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-actions, .article-actions {
+    width: 100%;
+  }
+}

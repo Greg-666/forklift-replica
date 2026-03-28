@@ -1,0 +1,77 @@
+<div class="home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>🚜 Forklift Replica</h1>
+    <p>La plus grande collection de répliques de chariots élévateurs<br/>The largest forklift replica collection</p>
+    <div class="hero-actions">
+      <a routerLink="/catalogue" class="btn-primary">Voir la collection</a>
+      <a routerLink="/marques" class="btn-secondary">Les marques</a>
+    </div>
+  </div>
+
+  <!-- BANNIÈRE BILINGUE -->
+  <div class="language-banner">
+    <p>🌍 Ce site est disponible en français et en anglais / This site is available in French and English</p>
+  </div>
+
+  <!-- STATS -->
+  @if (stats) {
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">{{ stats.total_chariots }}</span>
+          <span class="stat-label">Chariots / Forklifts</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">{{ stats.total_marques }}</span>
+          <span class="stat-label">Marques / Brands</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">{{ stats.total_types }}</span>
+          <span class="stat-label">Types</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">{{ stats.total_jouets }}</span>
+          <span class="stat-label">Marques jouets / Toy brands</span>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- TOP MARQUES -->
+  <div class="marques-section">
+    <h2>🏭 Top Marques</h2>
+    <div class="marques-grid">
+      @for (marque of marques; track marque.id) {
+        <a [routerLink]="['/marques', marque.slug]" class="marque-card">
+          <span class="marque-nom">{{ marque.nom }}</span>
+          <span class="marque-pays">{{ marque.pays }}</span>
+          <span class="marque-total">{{ marque.total_chariots }} pièces</span>
+        </a>
+      }
+    </div>
+    <div class="see-all">
+      <a routerLink="/marques" class="btn-secondary">Toutes les marques →</a>
+    </div>
+  </div>
+
+  <!-- TOP TYPES -->
+  @if (stats) {
+    <div class="types-section">
+      <h2>📊 Répartition par type</h2>
+      <div class="types-list">
+        @for (type of stats.par_type; track type.nom) {
+          <div class="type-row">
+            <span class="type-nom">{{ type.nom }}</span>
+            <div class="type-bar-wrap">
+              <div class="type-bar" [style.width.%]="(type.total / stats!.total_chariots) * 100"></div>
+            </div>
+            <span class="type-total">{{ type.total }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+</div>

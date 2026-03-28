@@ -1,0 +1,189 @@
+.about-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.about-hero {
+  text-align: center;
+  padding: 3rem 0;
+  border-bottom: 2px solid #fde68a;
+  margin-bottom: 3rem;
+}
+
+.about-hero h1 {
+  color: #d97706;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.about-hero p {
+  color: #78716c;
+  letter-spacing: 2px;
+}
+
+.about-section {
+  margin-bottom: 3rem;
+}
+
+.about-section h2 {
+  color: #92400e;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #fde68a;
+}
+
+.about-section p {
+  color: #57534e;
+  line-height: 1.8;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* ── Team ─────────────────────────────────── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.team-card {
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.team-avatar {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.team-card h3 {
+  color: #1c1917;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.team-card p {
+  color: #78716c;
+  font-size: 0.85rem;
+}
+
+/* ── Contact ──────────────────────────────── */
+.contact {
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #57534e;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  background-color: #fafaf9;
+  border: 1px solid #d6d3d1;
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  color: #1c1917;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-submit {
+  background-color: #d97706;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+}
+
+.btn-submit:hover {
+  background-color: #b45309;
+}
+
+/* ── Alerts ───────────────────────────────── */
+.alert {
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.alert.error {
+  background-color: #fff1f2;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+}
+
+.alert.success {
+  background-color: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #15803d;
+}
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 768px) {
+  .about-page {
+    padding: 1rem;
+  }
+
+  .about-hero h1 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

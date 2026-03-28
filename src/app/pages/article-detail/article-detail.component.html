@@ -1,0 +1,112 @@
+@if (article) {
+  <div class="article-detail">
+    <div class="article-hero" [style.backgroundImage]="'url(' + article.image + ')'">
+      <div class="article-hero-overlay">
+        <span class="category">{{ article.category }}</span>
+        <h1>{{ displayTitle }}</h1>
+        <div class="article-meta">
+          <span>✍️ {{ article.author }}</span>
+          <span>📅 {{ article.date | date:'dd/MM/yyyy' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-body">
+
+      <!-- LANGUE TOGGLE -->
+      @if (article.content_en) {
+        <div class="lang-toggle">
+          <button [class.active]="currentLang === 'fr'" (click)="currentLang = 'fr'">🇫🇷 Français</button>
+          <button [class.active]="currentLang === 'en'" (click)="currentLang = 'en'">🇬🇧 English</button>
+        </div>
+      }
+
+      <div class="tags">
+        @for (tag of article.tags; track tag) {
+          <span class="tag"># {{ tag }}</span>
+        }
+      </div>
+
+      <div class="share-buttons">
+        <span class="share-label">Partager / Share 🚜</span>
+        <a [href]="'https://www.facebook.com/sharer/sharer.php?u=' + currentUrl" target="_blank" class="share-btn facebook">Facebook</a>
+        <a [href]="'https://twitter.com/intent/tweet?url=' + currentUrl + '&text=' + displayTitle" target="_blank" class="share-btn twitter">Twitter/X</a>
+        <a [href]="'https://www.linkedin.com/sharing/share-offsite/?url=' + currentUrl" target="_blank" class="share-btn linkedin">LinkedIn</a>
+        <a [href]="'https://wa.me/?text=' + displayTitle + ' ' + currentUrl" target="_blank" class="share-btn whatsapp">WhatsApp</a>
+      </div>
+
+      @if (article.photos && article.photos.length > 0) {
+        <div class="article-photos">
+          <h2>📸 Photos</h2>
+          <div class="photos-grid">
+            @for (photo of article.photos; track photo) {
+              <img [src]="photo" alt="photo" />
+            }
+          </div>
+        </div>
+      }
+
+      @if (article.video_url) {
+        <div class="article-video">
+          <h2>🎥 Vidéo</h2>
+          <div class="youtube-embed">
+            <iframe
+              [src]="article.video_url | safeUrl"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      }
+
+      <p class="content">{{ displayContent }}</p>
+    </div>
+
+    <div class="language-note">
+      <p>🌍 Feel free to comment in your language! / Commentez dans votre langue !</p>
+    </div>
+
+    <div class="comments-section">
+      <h2>💬 Commentaires ({{ comments.length }})</h2>
+
+      @if (comments.length === 0) {
+        <p class="no-comments">Aucun commentaire pour l'instant — sois le premier ! 🚜<br/>No comments yet — be the first!</p>
+      }
+
+      @for (comment of comments; track comment.id) {
+        <div class="comment">
+          <div class="comment-header">
+            <span class="comment-author">👤 {{ comment.author }}</span>
+            <span class="comment-date">{{ comment.date | date:'dd/MM/yyyy HH:mm' }}</span>
+            @if (authService.isModerator()) {
+              <button class="btn-delete-comment" (click)="deleteComment(comment.id)">🗑️</button>
+            }
+          </div>
+          <p class="comment-content">{{ comment.content }}</p>
+        </div>
+      }
+
+      @if (authService.isLoggedIn()) {
+        <div class="comment-form">
+          <h3>Laisser un commentaire / Leave a comment</h3>
+          <textarea
+            [(ngModel)]="newComment"
+            placeholder="Ton commentaire... your comment... 🚜"
+            rows="4">
+          </textarea>
+          <button class="btn-submit" (click)="submitComment()">Envoyer / Send</button>
+        </div>
+      } @else {
+        <div class="login-prompt">
+          <p>Tu dois être <a routerLink="/login">connecté</a> pour commenter.</p>
+        </div>
+      }
+    </div>
+  </div>
+} @else {
+  <div class="not-found">
+    <h2>Article introuvable 🚜</h2>
+    <a routerLink="/">Retour à l'accueil</a>
+  </div>
+}
