@@ -1,0 +1,153 @@
+.jouet-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.marque-hero {
+  background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  padding: 3rem 2rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.back-link {
+  color: #d97706;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 1rem;
+  transition: color 0.3s;
+}
+
+.back-link:hover { color: #b45309; }
+
+.marque-hero h1 {
+  color: #1c1917;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 1rem;
+}
+
+.marque-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  color: #78716c;
+  font-size: 0.95rem;
+}
+
+/* ── Chariots section ─────────────────────── */
+.chariots-section h2 {
+  color: #92400e;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #fde68a;
+}
+
+.marque-group {
+  margin-bottom: 2.5rem;
+}
+
+.marque-title {
+  color: #d97706;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.chariots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.chariot-card {
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.chariot-card:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+  transform: translateY(-2px);
+}
+
+.chariot-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.chariot-placeholder {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  background-color: #fef3c7;
+}
+
+.chariot-body {
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.chariot-type {
+  font-size: 0.7rem;
+  background-color: #d97706;
+  color: #fff;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  width: fit-content;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.chariot-modele {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1c1917;
+  margin: 0;
+}
+
+.chariot-qty {
+  font-size: 0.75rem;
+  color: #a8a29e;
+  margin: 0;
+}
+
+.empty {
+  color: #78716c;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+}
+
+.not-found {
+  text-align: center;
+  padding: 5rem;
+  color: #78716c;
+}
+
+.not-found a { color: #d97706; }
+
+@media (max-width: 768px) {
+  .jouet-detail { padding: 1rem; }
+  .marque-hero h1 { font-size: 1.8rem; }
+  .chariots-grid { grid-template-columns: repeat(2, 1fr); }
+}

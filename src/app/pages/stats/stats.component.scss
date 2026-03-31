@@ -1,0 +1,150 @@
+.stats-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ── Header ───────────────────────────────── */
+.stats-header {
+  text-align: center;
+  padding: 3rem 0 2rem;
+}
+
+.stats-header h1 {
+  color: #d97706;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.stats-header p {
+  color: #78716c;
+  letter-spacing: 1px;
+}
+
+/* ── KPI cards ────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.kpi-card {
+  background-color: #fffbeb;
+  border: 2px solid #fde68a;
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.kpi-card:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.kpi-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #d97706;
+  line-height: 1;
+}
+
+.kpi-label {
+  font-size: 0.8rem;
+  color: #78716c;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Charts ───────────────────────────────── */
+.chart-section {
+  margin-bottom: 3rem;
+}
+
+.chart-section h2 {
+  color: #92400e;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #fde68a;
+}
+
+/* ── Bar chart ────────────────────────────── */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bar-label {
+  min-width: 160px;
+  font-size: 0.9rem;
+  color: #44403c;
+  font-weight: 500;
+  text-align: right;
+}
+
+.bar-wrap {
+  flex: 1;
+  height: 28px;
+  background-color: #fef3c7;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background-color: #d97706;
+  border-radius: 6px;
+  transition: width 0.6s ease;
+}
+
+.bar-type {
+  background-color: #b45309;
+}
+
+.bar-value {
+  min-width: 36px;
+  text-align: right;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #d97706;
+}
+
+.bar-pct {
+  min-width: 48px;
+  text-align: right;
+  font-size: 0.8rem;
+  color: #a8a29e;
+}
+
+/* ── Loading ──────────────────────────────── */
+.loading {
+  text-align: center;
+  padding: 4rem;
+  color: #78716c;
+  font-style: italic;
+}
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 768px) {
+  .stats-page { padding: 1rem; }
+  .stats-header h1 { font-size: 1.8rem; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .bar-label { min-width: 100px; font-size: 0.8rem; }
+  .bar-pct { display: none; }
+}

@@ -1,0 +1,46 @@
+<div class="jouets-page">
+  <div class="jouets-header">
+    <h1>🎮 Marques de jouets</h1>
+    <p>{{ marques.length }} marques / {{ marques.length }} toy brands</p>
+  </div>
+
+  <!-- FILTRE PAR PAYS -->
+  <div class="filter-section">
+    <div class="filter-tabs">
+      <button class="tab" [class.active]="selectedPays === ''" (click)="resetFilter()">
+        Tous les pays
+      </button>
+      @for (p of pays; track p) {
+        <button
+          class="tab"
+          [class.active]="selectedPays === p"
+          (click)="filterByPays(p)">
+          {{ p }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- GRILLE MARQUES JOUETS -->
+  <div class="marques-grid">
+    @for (marque of filteredMarques; track marque.id) {
+      <a [routerLink]="['/jouets', marque.slug]" class="marque-card">
+        <div class="marque-header">
+          <h2 class="marque-nom">{{ marque.nom }}</h2>
+          @if ((marque.total_chariots ?? 0) > 0) {
+            <span class="marque-badge">{{ marque.total_chariots }}</span>
+          }
+        </div>
+        <div class="marque-info">
+          @if (marque.pays) {
+            <span class="marque-pays">📍 {{ marque.pays }}</span>
+          }
+          @if (marque.annee_creation) {
+            <span class="marque-annee">📅 Depuis {{ marque.annee_creation }}</span>
+          }
+        </div>
+        <span class="voir-plus">Voir les répliques →</span>
+      </a>
+    }
+  </div>
+</div>

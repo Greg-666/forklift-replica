@@ -1,0 +1,56 @@
+@if (marque) {
+  <div class="jouet-detail">
+
+    <div class="marque-hero">
+      <a routerLink="/jouets" class="back-link">← Toutes les marques de jouets</a>
+      <h1>{{ marque.nom }}</h1>
+      <div class="marque-meta">
+        @if (marque.pays) {
+          <span>📍 {{ marque.pays }}</span>
+        }
+        @if (marque.annee_creation) {
+          <span>📅 Fondée en {{ marque.annee_creation }}</span>
+        }
+        <span>🚜 {{ chariots.length }} réplique(s) dans la collection</span>
+      </div>
+    </div>
+
+    <div class="chariots-section">
+      <h2>🚜 Répliques ({{ chariots.length }})</h2>
+
+      @if (chariots.length === 0) {
+        <p class="empty">Aucune réplique pour cette marque de jouet.</p>
+      }
+
+      @for (group of chariotsByMarque; track group.marque) {
+        <div class="marque-group">
+          <h3 class="marque-title">{{ group.marque }} ({{ group.items.length }})</h3>
+          <div class="chariots-grid">
+            @for (chariot of group.items; track chariot.id) {
+              <div class="chariot-card">
+                @if (chariot.image_url) {
+                  <img [src]="chariot.image_url" [alt]="chariot.modele" class="chariot-img" />
+                } @else {
+                  <div class="chariot-placeholder">🚜</div>
+                }
+                <div class="chariot-body">
+                  <span class="chariot-type">{{ chariot.type_nom }}</span>
+                  <p class="chariot-modele">{{ chariot.modele || 'Sans modèle' }}</p>
+                  @if (chariot.quantite > 1) {
+                    <p class="chariot-qty">x{{ chariot.quantite }}</p>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+} @else {
+  <div class="not-found">
+    <h2>Marque introuvable 🚜</h2>
+    <a routerLink="/jouets">Retour aux marques de jouets</a>
+  </div>
+}

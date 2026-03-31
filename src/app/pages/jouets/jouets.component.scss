@@ -1,0 +1,132 @@
+.jouets-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.jouets-header {
+  text-align: center;
+  padding: 3rem 0 2rem;
+}
+
+.jouets-header h1 {
+  color: #d97706;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.jouets-header p {
+  color: #78716c;
+  letter-spacing: 1px;
+}
+
+/* ── Filtres ──────────────────────────────── */
+.filter-section {
+  margin-bottom: 2rem;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.tab:hover { background-color: #fde68a; }
+
+.tab.active {
+  background-color: #d97706;
+  border-color: #d97706;
+  color: #fff;
+}
+
+/* ── Grille ───────────────────────────────── */
+.marques-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.marque-card {
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: all 0.3s;
+}
+
+.marque-card:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.15);
+  transform: translateY(-3px);
+}
+
+.marque-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.marque-nom {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1c1917;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.marque-badge {
+  background-color: #d97706;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.marque-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.marque-pays,
+.marque-annee {
+  font-size: 0.85rem;
+  color: #78716c;
+}
+
+.voir-plus {
+  font-size: 0.85rem;
+  color: #d97706;
+  font-weight: 600;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .jouets-page { padding: 1rem; }
+  .jouets-header h1 { font-size: 1.8rem; }
+  .marques-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+}

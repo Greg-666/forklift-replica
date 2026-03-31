@@ -1,0 +1,49 @@
+<div class="marques-page">
+  <div class="marques-header">
+    <h1>🏭 Marques constructeur</h1>
+    <p>{{ marques.length }} marques dans la collection / {{ marques.length }} brands in the collection</p>
+  </div>
+
+  <!-- FILTRE PAR PAYS -->
+  <div class="filter-section">
+    <div class="filter-tabs">
+      <button class="tab" [class.active]="selectedPays === ''" (click)="resetFilter()">
+        Tous les pays
+      </button>
+      @for (p of pays; track p) {
+        <button
+          class="tab"
+          [class.active]="selectedPays === p"
+          (click)="filterByPays(p)">
+          {{ p }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- GRILLE MARQUES -->
+  <div class="marques-grid">
+    @for (marque of filteredMarques; track marque.id) {
+      <a [routerLink]="['/marques', marque.slug]" class="marque-card">
+        <div class="marque-header">
+          <h2 class="marque-nom">{{ marque.nom }}</h2>
+          @if ((marque.total_chariots ?? 0) > 0) {
+            <span class="marque-badge">{{ marque.total_chariots }}</span>
+          }
+        </div>
+        <div class="marque-info">
+          @if (marque.pays) {
+            <span class="marque-pays">📍 {{ marque.pays }}</span>
+          }
+          @if (marque.annee_creation) {
+            <span class="marque-annee">📅 Depuis {{ marque.annee_creation }}</span>
+          }
+        </div>
+        @if (marque.description) {
+          <p class="marque-desc">{{ marque.description }}</p>
+        }
+        <span class="voir-plus">Voir la collection →</span>
+      </a>
+    }
+  </div>
+</div>

@@ -1,0 +1,72 @@
+@if (marque) {
+  <div class="marque-detail">
+
+    <div class="marque-hero">
+      <div class="marque-hero-content">
+        <a routerLink="/marques" class="back-link">← Toutes les marques</a>
+        <h1>{{ marque.nom }}</h1>
+        <div class="marque-meta">
+          @if (marque.pays) {
+            <span>📍 {{ marque.pays }}</span>
+          }
+          @if (marque.annee_creation) {
+            <span>📅 Fondée en {{ marque.annee_creation }}</span>
+          }
+          <span>🚜 {{ chariots.length }} pièce(s) dans la collection</span>
+        </div>
+      </div>
+    </div>
+
+    @if (marque.description || marque.description_en) {
+      <div class="marque-description">
+        @if (marque.description_en) {
+          <div class="lang-toggle">
+            <button [class.active]="currentLang === 'fr'" (click)="currentLang = 'fr'">🇫🇷 Français</button>
+            <button [class.active]="currentLang === 'en'" (click)="currentLang = 'en'">🇬🇧 English</button>
+          </div>
+        }
+        <p>{{ currentLang === 'en' && marque.description_en ? marque.description_en : marque.description }}</p>
+      </div>
+    }
+
+    <div class="chariots-section">
+      <h2>🚜 Collection ({{ chariots.length }} pièces)</h2>
+
+      @if (chariots.length === 0) {
+        <p class="empty">Aucun chariot pour cette marque.</p>
+      }
+
+      @for (group of chariotsByType; track group.type) {
+        <div class="type-group">
+          <h3 class="type-title">{{ group.type }} ({{ group.items.length }})</h3>
+          <div class="chariots-grid">
+            @for (chariot of group.items; track chariot.id) {
+              <div class="chariot-card">
+                @if (chariot.image_url) {
+                  <img [src]="chariot.image_url" [alt]="chariot.modele" class="chariot-img" />
+                } @else {
+                  <div class="chariot-placeholder">🚜</div>
+                }
+                <div class="chariot-body">
+                  <p class="chariot-modele">{{ chariot.modele || 'Sans modèle' }}</p>
+                  @if (chariot.jouet_nom) {
+                    <p class="chariot-jouet">{{ chariot.jouet_nom }}</p>
+                  }
+                  @if (chariot.quantite > 1) {
+                    <p class="chariot-qty">x{{ chariot.quantite }}</p>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+} @else {
+  <div class="not-found">
+    <h2>Marque introuvable 🚜</h2>
+    <a routerLink="/marques">Retour aux marques</a>
+  </div>
+}

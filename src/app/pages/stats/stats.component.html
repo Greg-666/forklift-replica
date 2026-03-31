@@ -1,0 +1,73 @@
+<div class="stats-page">
+  <div class="stats-header">
+    <h1>📊 Statistiques</h1>
+    <p>Vue d'ensemble de la collection / Collection overview</p>
+  </div>
+
+  @if (stats) {
+
+    <!-- CHIFFRES CLÉS -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-number">{{ stats.total_chariots }}</span>
+        <span class="kpi-label">Total pièces / Total pieces</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-number">{{ stats.total_marques }}</span>
+        <span class="kpi-label">Marques constructeur / Brands</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-number">{{ stats.total_types }}</span>
+        <span class="kpi-label">Types de chariots / Types</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-number">{{ stats.total_jouets }}</span>
+        <span class="kpi-label">Marques jouets / Toy brands</span>
+      </div>
+    </div>
+
+    <!-- TOP MARQUES -->
+    <div class="chart-section">
+      <h2>🏆 Top marques constructeur</h2>
+      <div class="bar-chart">
+        @for (marque of stats.top_marques; track marque.nom) {
+          <div class="bar-row">
+            <span class="bar-label">{{ marque.nom }}</span>
+            <div class="bar-wrap">
+              <div
+                class="bar"
+                [style.width.%]="getBarWidth(marque.total, maxMarque)">
+              </div>
+            </div>
+            <span class="bar-value">{{ marque.total }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- RÉPARTITION PAR TYPE -->
+    <div class="chart-section">
+      <h2>🚜 Répartition par type</h2>
+      <div class="bar-chart">
+        @for (type of stats.par_type; track type.nom) {
+          <div class="bar-row">
+            <span class="bar-label">{{ type.nom }}</span>
+            <div class="bar-wrap">
+              <div
+                class="bar bar-type"
+                [style.width.%]="getBarWidth(type.total, maxType)">
+              </div>
+            </div>
+            <span class="bar-value">{{ type.total }}</span>
+            <span class="bar-pct">{{ ((type.total / stats!.total_chariots) * 100).toFixed(1) }}%</span>
+          </div>
+        }
+      </div>
+    </div>
+
+  } @else {
+    <div class="loading">
+      <p>Chargement des statistiques...</p>
+    </div>
+  }
+</div>

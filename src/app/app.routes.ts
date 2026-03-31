@@ -7,21 +7,28 @@ import { AdminComponent }         from './pages/admin/admin.component';
 import { SearchComponent }        from './pages/search/search.component';
 import { CatalogueComponent }     from './pages/catalogue/catalogue.component';
 import { ArticleDetailComponent } from './pages/article-detail/article-detail.component';
-
+import { MarquesComponent }       from './pages/marques/marques.component';
+import { MarqueDetailComponent }  from './pages/marque-detail/marque-detail.component';
+import { JouetsComponent }        from './pages/jouets/jouets.component';
+import { JouetDetailComponent }   from './pages/jouet-detail/jouet-detail.component';
+import { StatsComponent }         from './pages/stats/stats.component';
 import { authGuard }              from './guards/auth.guard';
 import { adminGuard }             from './guards/admin.guard';
 import { moderatorGuard }         from './guards/moderator.guard';
 
 export const routes: Routes = [
-
   { path: 'login', component: LoginComponent },
-
-  { path: '',           component: HomeComponent,          canActivate: [authGuard] },
-  { path: 'about',      component: AboutComponent,         canActivate: [authGuard] },
-  { path: 'profile',    component: ProfileComponent,       canActivate: [authGuard] },
-  { path: 'search',     component: SearchComponent,        canActivate: [authGuard] },
-  { path: 'catalogue',  component: CatalogueComponent,     canActivate: [authGuard] },
-  { path: 'article/:id', component: ArticleDetailComponent, canActivate: [authGuard] },
+  { path: '',              component: HomeComponent,          canActivate: [authGuard] },
+  { path: 'about',         component: AboutComponent,         canActivate: [authGuard] },
+  { path: 'profile',       component: ProfileComponent,       canActivate: [authGuard] },
+  { path: 'search',        component: SearchComponent,        canActivate: [authGuard] },
+  { path: 'catalogue',     component: CatalogueComponent,     canActivate: [authGuard] },
+  { path: 'article/:id',   component: ArticleDetailComponent, canActivate: [authGuard] },
+  { path: 'marques',       component: MarquesComponent,       canActivate: [authGuard] },
+  { path: 'marques/:slug', component: MarqueDetailComponent,  canActivate: [authGuard] },
+  { path: 'jouets',        component: JouetsComponent,        canActivate: [authGuard] },
+  { path: 'jouets/:slug',  component: JouetDetailComponent,   canActivate: [authGuard] },
+  { path: 'stats',         component: StatsComponent,         canActivate: [authGuard] },
 
   { path: 'admin',                        component: AdminComponent, canActivate: [authGuard, adminGuard] },
   { path: 'admin/article/new',            component: AdminComponent, canActivate: [authGuard, adminGuard] },
