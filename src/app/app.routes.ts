@@ -15,6 +15,7 @@ import { StatsComponent }         from './pages/stats/stats.component';
 import { authGuard }              from './guards/auth.guard';
 import { adminGuard }             from './guards/admin.guard';
 import { moderatorGuard }         from './guards/moderator.guard';
+import {ChariotFormComponent} from './pages/chariot-form/chariot-form.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,6 +42,10 @@ export const routes: Routes = [
   { path: 'moderator/article/edit/:id',   component: AdminComponent, canActivate: [authGuard, moderatorGuard] },
   { path: 'moderator/chariot/new',        component: AdminComponent, canActivate: [authGuard, moderatorGuard] },
   { path: 'moderator/chariot/edit/:id',   component: AdminComponent, canActivate: [authGuard, moderatorGuard] },
+  { path: 'admin/chariot/new',            component: ChariotFormComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'admin/chariot/edit/:id',       component: ChariotFormComponent, canActivate: [authGuard, adminGuard] },
+  { path: 'moderator/chariot/new',        component: ChariotFormComponent, canActivate: [authGuard, moderatorGuard] },
+  { path: 'moderator/chariot/edit/:id',   component: ChariotFormComponent, canActivate: [authGuard, moderatorGuard] },
 
   { path: '**', redirectTo: 'login' },
 ];

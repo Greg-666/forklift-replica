@@ -6,39 +6,67 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  z-index: 0
 }
 
-/* ── Video background ────────────────────── */
-.video-background {
+.collage-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%;
+  height: 100%;
+  gap: 0;
+}
+
+.col-img {
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px) brightness(0.85);
+  transform: scale(1.05);
+  width: 100%;
+  height: 100%;
+}
+
+.collage-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: 0;
+  overflow: hidden;
 }
-
-.video-background iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 56.25vw;
-  min-height: 100vh;
-  min-width: 177.77vh;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.video-overlay {
+.collage-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 248, 220, 0.35);
-  z-index: 1;
+  background: rgba(255, 251, 235, 0.45);
+  z-index: 1
+}
+
+.forklift {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.6;
+  animation: float linear infinite;
+}
+
+.f1 { top: 10%; left: -5%; font-size: 3rem; animation-duration: 18s; animation-delay: 0s; }
+.f2 { top: 55%; left: -5%; font-size: 2rem; animation-duration: 22s; animation-delay: 3s; }
+.f3 { top: 25%; left: -5%; font-size: 4rem; animation-duration: 15s; animation-delay: 6s; }
+.f4 { top: 75%; left: -5%; font-size: 2.5rem; animation-duration: 20s; animation-delay: 1s; }
+.f5 { top: 40%; left: -5%; font-size: 3.5rem; animation-duration: 25s; animation-delay: 8s; }
+.f6 { top: 85%; left: -5%; font-size: 2rem; animation-duration: 17s; animation-delay: 4s; }
+.f7 { top: 65%; left: -5%; font-size: 3rem; animation-duration: 21s; animation-delay: 2s; }
+.f8 { top: 15%; left: -5%; font-size: 2.5rem; animation-duration: 19s; animation-delay: 7s; }
+
+@keyframes float {
+  0%   { transform: translateX(0); opacity: 0; }
+  5%   { opacity: 0.6; }
+  95%  { opacity: 0.6; }
+  100% { transform: translateX(110vw); opacity: 0; }
 }
 
 /* ── Card ─────────────────────────────────── */
@@ -53,6 +81,7 @@
   max-width: 420px;
   backdrop-filter: blur(8px);
   box-shadow: 0 8px 32px rgba(245, 158, 11, 0.15);
+  margin: 1rem
 }
 
 /* ── Header ───────────────────────────────── */

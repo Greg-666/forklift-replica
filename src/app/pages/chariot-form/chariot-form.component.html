@@ -1,0 +1,91 @@
+<div class="form-page">
+  <div class="form-header">
+    <h1>{{ isEditMode ? '✏️ Modifier le chariot' : '🚜 Nouveau chariot' }}</h1>
+  </div>
+
+  <div class="form-container">
+
+    <!-- MARQUE CONSTRUCTEUR + TYPE -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>Marque constructeur *</label>
+        <select [(ngModel)]="chariot.marque_constructeur_id">
+          <option [ngValue]="null">Choisir une marque...</option>
+          @for (marque of marques; track marque.id) {
+            <option [ngValue]="marque.id">{{ marque.nom }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Type de chariot *</label>
+        <select [(ngModel)]="chariot.type_chariot_id">
+          <option [ngValue]="null">Choisir un type...</option>
+          @for (type of types; track type.id) {
+            <option [ngValue]="type.id">{{ type.nom }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <!-- MARQUE JOUET + THEMATIQUE -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>Marque de jouet</label>
+        <select [(ngModel)]="chariot.marque_jouet_id">
+          <option [ngValue]="null">Aucune marque jouet</option>
+          @for (mj of marquesJouet; track mj.id) {
+            <option [ngValue]="mj.id">{{ mj.nom }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Thématique</label>
+        <select [(ngModel)]="chariot.thematique_id">
+          <option [ngValue]="null">Aucune thématique</option>
+          @for (th of thematiques; track th.id) {
+            <option [ngValue]="th.id">{{ th.nom }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <!-- MODELE + QUANTITE -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>Modèle</label>
+        <input type="text" [(ngModel)]="chariot.modele" placeholder="Ex: R14, EFG 430, 8FBN25..." />
+      </div>
+
+      <div class="form-group">
+        <label>Quantité</label>
+        <input type="number" [(ngModel)]="chariot.quantite" min="1" placeholder="1" />
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="form-group">
+      <label>Photo (URL)</label>
+      <input type="text" [(ngModel)]="chariot.image_url" placeholder="https://..." />
+      @if (chariot.image_url) {
+        <img class="image-preview" [src]="chariot.image_url" alt="preview" />
+      }
+    </div>
+
+    <!-- NOTES -->
+    <div class="form-group">
+      <label>Notes</label>
+      <textarea [(ngModel)]="chariot.notes" rows="4" placeholder="Informations complémentaires, état, provenance..."></textarea>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="form-actions">
+      <button class="btn-cancel" (click)="cancel()">Annuler</button>
+      <button class="btn-submit" (click)="onSubmit()">
+        {{ isEditMode ? '💾 Sauvegarder' : '🚜 Ajouter' }}
+      </button>
+    </div>
+
+  </div>
+</div>
