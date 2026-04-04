@@ -1,0 +1,117 @@
+<div class="form-page">
+  <div class="form-header">
+    <h1>{{ isEditMode ? '✏️ Modifier l\'article' : '📝 Nouvel article' }}</h1>
+  </div>
+
+  <div class="form-container">
+
+    <!-- TITRE FR + EN -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>🇫🇷 Titre *</label>
+        <input type="text" [(ngModel)]="article.title" placeholder="Titre en français..." />
+      </div>
+      <div class="form-group">
+        <label>🇬🇧 Title (English)</label>
+        <input type="text" [(ngModel)]="article.title_en" placeholder="Title in English..." />
+      </div>
+    </div>
+
+    <!-- CATEGORIE + AUTEUR -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>Catégorie *</label>
+        <select [(ngModel)]="article.category">
+          <option value="">Choisir une catégorie</option>
+          @for (cat of categories; track cat) {
+            <option [value]="cat">{{ cat }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Auteur</label>
+        <input type="text" [(ngModel)]="article.author" placeholder="Nom de l'auteur..." />
+      </div>
+    </div>
+
+    <!-- RÉSUMÉ FR + EN -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>🇫🇷 Résumé</label>
+        <input type="text" [(ngModel)]="article.summary" placeholder="Résumé court en français..." />
+      </div>
+      <div class="form-group">
+        <label>🇬🇧 Summary (English)</label>
+        <input type="text" [(ngModel)]="article.summary_en" placeholder="Short summary in English..." />
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="form-group">
+      <label>Image principale (URL)</label>
+      <input type="text" [(ngModel)]="article.image" placeholder="https://..." />
+      @if (article.image) {
+        <img class="image-preview" [src]="article.image" alt="preview" />
+      }
+    </div>
+
+    <!-- PHOTOS -->
+    <div class="form-group">
+      <label>📸 Photos (une URL par ligne)</label>
+      <textarea [(ngModel)]="photoInput" rows="4"
+                placeholder="https://photo1.jpg&#10;https://photo2.jpg">
+      </textarea>
+      @if (article.photos && article.photos.length > 0) {
+        <div class="photos-preview">
+          @for (photo of article.photos; track photo) {
+            <img [src]="photo" alt="photo" />
+          }
+        </div>
+      }
+    </div>
+
+    <!-- VIDEO -->
+    <div class="form-group">
+      <label>🎥 Vidéo YouTube (URL)</label>
+      <input type="text" [(ngModel)]="article.video_url" placeholder="https://www.youtube.com/watch?v=..." />
+      @if (article.video_url) {
+        <div class="video-preview">
+          <iframe [src]="article.video_url | safeUrl" frameborder="0" allowfullscreen></iframe>
+        </div>
+      }
+    </div>
+
+    <!-- TAGS -->
+    <div class="form-group">
+      <label>Tags (séparés par des virgules)</label>
+      <input type="text" [(ngModel)]="tagInput"
+             placeholder="Collection, Jungheinrich, Miniature..."
+             (blur)="addTag()" />
+      <div class="tags-preview">
+        @for (tag of article.tags; track tag) {
+          <span class="tag"># {{ tag }}</span>
+        }
+      </div>
+    </div>
+
+    <!-- CONTENU FR + EN -->
+    <div class="form-group">
+      <label>🇫🇷 Contenu *</label>
+      <textarea [(ngModel)]="article.content" rows="10" placeholder="Contenu en français..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>🇬🇧 Content (English)</label>
+      <textarea [(ngModel)]="article.content_en" rows="10" placeholder="Content in English..."></textarea>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="form-actions">
+      <button class="btn-cancel" (click)="cancel()">Annuler</button>
+      <button class="btn-submit" (click)="onSubmit()">
+        {{ isEditMode ? '💾 Sauvegarder' : '🚀 Publier' }}
+      </button>
+    </div>
+
+  </div>
+</div>
