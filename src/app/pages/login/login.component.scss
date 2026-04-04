@@ -1,87 +1,68 @@
 /* ── Page layout ─────────────────────────── */
 .login-page {
   min-height: 100vh;
+  height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 2;
   overflow: hidden;
-  z-index: 0
+}
+
+/* ── Collage background ───────────────────── */
+.collage-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
 }
 
 .collage-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  width: 100%;
-  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  width: 100vw;
+  height: 100vh;
   gap: 0;
 }
 
 .col-img {
   background-size: cover;
-  background-position: center;
-  filter: blur(2px) brightness(0.85);
-  transform: scale(1.05);
+  background-position: center 85%;
+  filter: blur(1px) brightness(0.9);
   width: 100%;
   height: 100%;
 }
 
-.collage-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  overflow: hidden;
-}
 .collage-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 251, 235, 0.45);
-  z-index: 1
-}
-
-.forklift {
-  position: absolute;
-  font-size: 2.5rem;
-  opacity: 0.6;
-  animation: float linear infinite;
-}
-
-.f1 { top: 10%; left: -5%; font-size: 3rem; animation-duration: 18s; animation-delay: 0s; }
-.f2 { top: 55%; left: -5%; font-size: 2rem; animation-duration: 22s; animation-delay: 3s; }
-.f3 { top: 25%; left: -5%; font-size: 4rem; animation-duration: 15s; animation-delay: 6s; }
-.f4 { top: 75%; left: -5%; font-size: 2.5rem; animation-duration: 20s; animation-delay: 1s; }
-.f5 { top: 40%; left: -5%; font-size: 3.5rem; animation-duration: 25s; animation-delay: 8s; }
-.f6 { top: 85%; left: -5%; font-size: 2rem; animation-duration: 17s; animation-delay: 4s; }
-.f7 { top: 65%; left: -5%; font-size: 3rem; animation-duration: 21s; animation-delay: 2s; }
-.f8 { top: 15%; left: -5%; font-size: 2.5rem; animation-duration: 19s; animation-delay: 7s; }
-
-@keyframes float {
-  0%   { transform: translateX(0); opacity: 0; }
-  5%   { opacity: 0.6; }
-  95%  { opacity: 0.6; }
-  100% { transform: translateX(110vw); opacity: 0; }
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 251, 235, 0.35);
+  z-index: 1;
 }
 
 /* ── Card ─────────────────────────────────── */
 .login-card {
   position: relative;
-  z-index: 2;
-  background-color: rgba(255, 255, 255, 0.92);
-  border: 2px solid #f59e0b;
+  right:4%;
+  z-index: 3;
+  background-color: #cc0000;
+  border: 2px solid #990000;
   border-radius: 12px;
   padding: 2.5rem;
   width: 100%;
   max-width: 420px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 32px rgba(245, 158, 11, 0.15);
-  margin: 1rem
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin: 1rem;
+  font-family: 'Lucida Calligraphy', cursive;
 }
 
 /* ── Header ───────────────────────────────── */
@@ -91,28 +72,30 @@
 }
 
 .login-header h2 {
-  color: #92400e;
-  font-size: 0.85rem;
-  text-transform: lowercase;
-  letter-spacing: 3px;
+  color: #ffe0e0;
+  font-size: 0.9rem;
   font-style: italic;
+  font-family: 'Lucida Calligraphy', cursive;
   margin-bottom: 0.75rem;
   font-weight: normal;
 }
 
 .login-header h1 {
-  color: #d97706;
+  color: #fff;
   font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 0.5rem;
+  font-family: 'Lucida Calligraphy', cursive;
+  font-weight: 900;
 }
 
 .login-header p {
-  color: #78716c;
+  color: #ffe0e0;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 0.85rem;
+  font-family: 'Lucida Calligraphy', cursive;
 }
 
 /* ── Alerts ───────────────────────────────── */
@@ -124,15 +107,15 @@
 }
 
 .alert.error {
-  background-color: #fff1f2;
-  border: 1px solid #fca5a5;
-  color: #b91c1c;
+  background-color: #7a0000;
+  border: 1px solid #ff6666;
+  color: #ffcccc;
 }
 
 .alert.success {
-  background-color: #f0fdf4;
-  border: 1px solid #86efac;
-  color: #15803d;
+  background-color: #004400;
+  border: 1px solid #66ff66;
+  color: #ccffcc;
 }
 
 /* ── Form ─────────────────────────────────── */
@@ -142,18 +125,19 @@
 
 .form-group label {
   display: block;
-  color: #57534e;
+  color: #ffe0e0;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0.5rem;
   font-weight: 500;
+  font-family: 'Lucida Calligraphy', cursive;
 }
 
 .form-group input {
   width: 100%;
-  background-color: #fafaf9;
-  border: 1px solid #d6d3d1;
+  background-color: #fff;
+  border: 1px solid #990000;
   border-radius: 6px;
   padding: 0.8rem 1rem;
   color: #1c1917;
@@ -161,18 +145,18 @@
   transition: border-color 0.3s;
   outline: none;
   box-sizing: border-box;
+  font-family: 'Lucida Calligraphy', cursive;
 }
 
 .form-group input:focus {
-  border-color: #f59e0b;
-  background-color: #fff;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  border-color: #660000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 select {
   width: 100%;
-  background-color: #fafaf9;
-  border: 1px solid #d6d3d1;
+  background-color: #fff;
+  border: 1px solid #990000;
   border-radius: 6px;
   padding: 0.8rem 1rem;
   color: #1c1917;
@@ -181,11 +165,12 @@ select {
   transition: border-color 0.3s;
   cursor: pointer;
   box-sizing: border-box;
+  font-family: 'Lucida Calligraphy', cursive;
 }
 
 select:focus {
-  border-color: #f59e0b;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  border-color: #660000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 select option {
@@ -219,7 +204,7 @@ select option {
 /* ── Submit button ────────────────────────── */
 .btn-submit {
   width: 100%;
-  background-color: #d97706;
+  background-color: #990000;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -231,30 +216,34 @@ select option {
   transition: background-color 0.3s;
   margin-top: 0.5rem;
   font-weight: 600;
+  font-family: 'Lucida Calligraphy', cursive;
+  font-style: italic;
 }
 
 .btn-submit:hover {
-  background-color: #b45309;
+  background-color: #660000;
 }
 
 /* ── Footer ───────────────────────────────── */
 .login-footer {
   text-align: center;
   margin-top: 1.5rem;
-  color: #78716c;
+  color: #ffe0e0;
   font-size: 0.9rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  font-family: 'Lucida Calligraphy', cursive;
+  font-style: italic;
 }
 
 .toggle-link {
-  color: #d97706;
+  color: #ffcccc;
   cursor: pointer;
   transition: color 0.3s;
   font-weight: 500;
 }
 
 .toggle-link:hover {
-  color: #92400e;
+  color: #fff;
 }
