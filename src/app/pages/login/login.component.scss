@@ -24,7 +24,7 @@
 
 .collage-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   width: 100vw;
   height: 100vh;
@@ -33,7 +33,7 @@
 
 .col-img {
   background-size: cover;
-  background-position: center 85%;
+  background-position: center 80%;
   filter: blur(1px) brightness(0.9);
   width: 100%;
   height: 100%;
@@ -52,14 +52,15 @@
 /* ── Card ─────────────────────────────────── */
 .login-card {
   position: relative;
-  right:4%;
+  right:0.4%;
   z-index: 3;
   background-color: #cc0000;
   border: 2px solid #990000;
   border-radius: 12px;
   padding: 2.5rem;
   width: 100%;
-  max-width: 420px;
+  height: 60%;
+  max-width: 610px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   margin: 1rem;
   font-family: 'Lucida Calligraphy', cursive;
@@ -68,7 +69,8 @@
 /* ── Header ───────────────────────────────── */
 .login-header {
   text-align: center;
-  margin-bottom: 2rem;
+
+  margin-top: 8rem;
 }
 
 .login-header h2 {
